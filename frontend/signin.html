@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Amazon Clone - Sign In</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding-top: 50px;
+        }
+
+        .signin-container {
+            width: 350px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 30px 26px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .signin-container img {
+            display: block;
+            margin: 0 auto 20px;
+            width: 100px;
+        }
+
+        .signin-container h1 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .signin-container label {
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        .signin-container input[type="text"],
+        .signin-container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            margin: 8px 0 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .signin-container button[type="submit"] {
+            background-color: #f0c14b;
+            border: 1px solid #a88734;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .signin-container p {
+            font-size: 14px;
+            margin-top: 20px;
+        }
+
+        .signin-container a {
+            color: #0066c0;
+            text-decoration: none;
+        }
+
+        .signin-container a:hover {
+            text-decoration: underline;
+        }
+
+        .signin-container button[style*="background-color: #e7e9ec"] {
+            margin-top: 10px;
+            background-color: #e7e9ec;
+            border-color: #adb1b8;
+            padding: 10px;
+            width: 100%;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="signin-container">
+        <img src="https://1000logos.net/wp-content/uploads/2016/10/Amazon-Logo-2000.png" alt="Amazon Logo">
+        <h1>Sign-In</h1>
+        <form id="signInForm">
+            <label for="email">Email or mobile phone number</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email" />
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password" />
+
+            <button type="submit">Sign In</button>
+        </form>
+
+        <p>By continuing, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.</p>
+
+        <p><a href="#">Need help?</a></p>
+
+        <hr style="margin: 20px 0;">
+
+        <p style="text-align:center;">New to Amazon?</p>
+        <a href="register.html">
+            <button style="margin-top: 10px; background-color: #e7e9ec; border-color: #adb1b8;">Create your Amazon account</button>
+        </a>
+    </div>
+
+    <script>
+      document.getElementById('signInForm').addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent the default form submission
+
+          const emailInput = document.getElementById('email');
+          const enteredEmail = emailInput.value;
+
+          // Store the email in local storage
+          localStorage.setItem('userEmail', enteredEmail);
+
+          // Redirect to your home page (assuming it's frontend/index.html)
+          window.location.href = '/frontend/index.html';
+      });
+
+      // Optional: Retrieve and display the stored email when the home page loads
+      // (This code would typically go in your frontend/index.html file's JavaScript)
+      // window.onload = function() {
+      //     const storedEmail = localStorage.getItem('userEmail');
+      //     if (storedEmail) {
+      //         console.log('Stored Email on Home Page:', storedEmail);
+      //         // You could display this email somewhere on your home page
+      //         // For example, if you have an element with the ID 'userGreeting' on your home page:
+      //         // const greetingElement = document.getElementById('userGreeting');
+      //         // if (greetingElement) {
+      //         //     greetingElement.textContent = 'Welcome back, ' + storedEmail;
+      //         // }
+      //     }
+      // };
+  </script>
+</body>
+</html>

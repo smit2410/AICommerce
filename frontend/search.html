@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title></title>
+  <script>
+    window.onload = function () {
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get("q");
+
+      if (query) {
+        const encodedQuery = encodeURIComponent(query.trim());
+        const amazonURL = `https://www.amazon.in/s?k=${encodedQuery}`;
+        window.location.href = amazonURL; // Redirects the user
+      } else {
+        document.body.innerHTML = "<h2>No search query provided.</h2>";
+      }
+    };
+  </script>
+</head>
+<body>
+</body>
+</html>

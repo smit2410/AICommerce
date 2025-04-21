@@ -1,0 +1,559 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f2f2;
+    color: #111;
+}
+
+/* Navbar Styles - Make it relative for absolute positioning */
+.navbar {
+    background-color: #232f3e;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    justify-content: space-around; /* Distribute space evenly around items */
+    flex-wrap: nowrap;
+}
+
+.nav-left {
+    display: flex;
+    align-items: center;
+    /* Remove any explicit margin-right here */
+}
+
+.nav-left .logo {
+    margin-right: 15px;
+}
+
+.nav-left .logo img {
+    width: 100px;
+    vertical-align: middle;
+}
+
+.nav-location {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 15px; /* Reduced margin */
+    vertical-align: middle;
+}
+
+.nav-location a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    margin-top: 3px;
+}
+
+.nav-location a:hover {
+    text-decoration: underline;
+}
+
+/* Search Bar Styles */
+.search-bar {
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 700px;
+    height: 40px;
+    /* Remove any explicit margin-right here */
+}
+.search-bar form {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+#searchForm {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.departments-dropdown {
+    position: relative;
+    height: 100%;
+    font-size: 14px;
+    flex-grow: 0;
+    margin-right: 2px;
+    border-radius: 4px 0 0 4px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+}
+
+.departments-button {
+    height: 100%;
+    border: none;
+    background-color: #f3f3f3;
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 14px;
+    color: #111;
+}
+
+.departments-button .fa {
+    margin-left: 6px;
+    font-size: 12px;
+    color: #555;
+}
+
+.departments-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    width: 250px;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border: 1px solid #ddd;
+    z-index: 999;
+    display: none;
+    border-radius: 0 0 4px 4px;
+}
+
+.departments-dropdown:hover .departments-content {
+    display: block;
+}
+
+.departments-list {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+}
+
+.departments-list li {
+    padding: 6px 16px;
+}
+
+.departments-list li a {
+    color: #111;
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+}
+
+.departments-list li a:hover {
+    background-color: #f0f0f0;
+    color: #c45500;
+}
+
+.search-input {
+    flex-grow: 1;
+    height: 100%;
+    padding: 0 10px;
+    border: none;
+    font-size: 14px;
+}
+
+.search-button {
+    height: 100%;
+    width: 45px;
+    background-color: #febd69;
+    color: #111;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 2px;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.search-button:hover {
+    background-color: #f0c14b;
+}
+/* Updated CSS - Attempt 15 (Inline-Block for nav-hello-signin) */
+
+
+.nav-hello-signin {
+    color: white;
+    white-space: nowrap;
+    font-size: 0.9em; /* Reduced from 0.9em */
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+}
+
+.nav-hello-signin strong h1 {
+    font-size: 1.2em; /* Control the size of "Hello, sign in" */
+    margin: 0; /* Remove default heading margins */
+    line-height: 1; /* Adjust line height as needed */
+}
+
+.nav-hello-signin strong h2 {
+    font-size: 1.2em; /* Control the size of "Accounts & Lists" */
+    margin: 0; /* Remove default heading margins */
+    line-height: 1; /* Adjust line height as needed */
+    font-weight: normal; /* Make it less bold if desired */
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-right > * {
+    margin-left: 10px;
+}
+
+.nav-right > *:first-child {
+    margin-left: 0;
+}
+
+/* Dropdown Styles (Account & Lists) */
+.nav-right .dropdown {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.nav-right .dropdown-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    text-decoration: none;
+    color: white;
+    font-size: 0.9em;
+}
+
+.nav-right .dropdown-toggle > strong {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/* Style for "Returns & Orders" */
+.nav-right .nav-orders {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-size: 0.9em;
+}
+
+.nav-right .nav-orders > strong {
+    font-weight: bold;
+    font-size: 1em;
+}
+
+/* Style for the "Cart" */
+.nav-right .nav-cart {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+}
+
+.nav-right .nav-cart > strong {
+    font-weight: bold;
+    margin-left: 5px;
+    font-size: 1em;
+}
+
+/* Dropdown Menu Styles (Account & Lists) */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    color: #0f1111;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 15px 20px;
+    width: 300px;
+    z-index: 100;
+}
+
+.dropdown:hover .dropdown-menu,
+.dropdown.active .dropdown-menu {
+    display: block;
+}
+/* Secondary Navbar */
+.secondary-navbar {
+    background-color: #37475a;
+    color: white;
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    overflow-x: auto;
+}
+
+.secondary-navbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.secondary-navbar ul li {
+    margin-right: 12px;
+}
+
+.secondary-navbar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+    transition: color 0.15s ease-in-out;
+}
+
+.secondary-navbar ul li a:hover {
+    color: #f0c14b;
+}
+
+.secondary-navbar ul li a.all-link {
+    font-size: 16px;
+    margin-right: 15px;
+}
+
+.secondary-navbar ul li a.all-link strong {
+    font-weight: bold;
+}
+
+/* Sidebar Menu */
+.sidebar-menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 300px;
+    height: 100%;
+    background-color: #f3f3f3;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    transition: left 0.3s ease-in-out;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 12px 0;
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 12px;
+}
+
+.sidebar-section {
+    margin-bottom: 15px;
+}
+
+.sidebar-section h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.sidebar-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebar-section ul li {
+    margin-bottom: 8px;
+}
+
+.sidebar-section ul li a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #111;
+    text-decoration: none;
+    font-size: 14px;
+    padding: 6px 0;
+    transition: color 0.15s ease-in-out;
+}
+
+.sidebar-section ul li a:hover {
+    color: #c45500;
+}
+
+.sidebar-section ul li a .arrow,
+.sidebar-section ul li a .down-arrow {
+    font-size: 16px;
+    color: #777;
+}
+
+/* Hover effect for "Deliver to" */
+.nav-location a:hover {
+    text-decoration: underline; /* Keep the underline */
+    opacity: 0.8; /* Slightly dim on hover */
+    cursor: pointer; /* Indicate interactivity */
+}
+
+/* Hover effect for the language selector */
+.nav-language:hover .nav-language-container {
+    opacity: 0.8;
+}
+
+.nav-language:hover {
+    position: static; /* Allow dropdown to overlap other elements */
+}
+
+/* Hover effect for "Hello, sign in" */
+.nav-hello-signin:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+/* Hover effect for "Returns & Orders" */
+.nav-right .nav-orders:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+/* Hover effect for the "Cart" */
+.nav-right .nav-cart:hover {
+    opacity: 0.8;
+    cursor: pointer;
+}
+
+.nav-language {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+    font-size: 0.9em;
+    cursor: pointer;
+    position: relative;
+    margin-right: 10px;
+}
+
+.nav-language-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-flag {
+    font-size: 1.2em;
+    margin-right: 3px;
+}
+
+.nav-lang-code {
+    margin-right: 3px;
+}
+
+.nav-arrow {
+    font-size: 0.8em;
+}
+
+.nav-language-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    color: #0f1111;
+    border: 1px solid #ccc;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 100;
+    width: 250px;
+    padding: 10px;
+    display: none; /* Still hidden by default */
+}
+
+/* Force display: block on hover for testing */
+.nav-language:hover .nav-language-dropdown {
+    display: block !important;
+}
+
+.nav-language-header,
+.nav-currency-header {
+    font-weight: bold;
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #eee;
+}
+
+.nav-language-list {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 10px;
+}
+
+.nav-language-list li {
+    margin-bottom: 5px;
+}
+
+.nav-language-list label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-language-list input[type="radio"] {
+    margin-right: 8px;
+}
+
+.nav-currency-select label {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-currency-select input[type="radio"] {
+    margin-right: 8px;
+}
+
+.nav-currency-select a {
+    color: #007185;
+    text-decoration: none;
+    margin-left: 10px;
+    font-size: 0.9em;
+}
+
+.nav-currency-select a:hover {
+    text-decoration: underline;
+}
+
+.nav-region-info {
+    display: flex;
+    align-items: center;
+    font-size: 0.8em;
+    margin-top: 10px;
+    padding-top: 5px;
+    border-top: 1px solid #eee;
+}
+
+.nav-region-info .nav-flag {
+    font-size: 1em;
+    margin-right: 5px;
+}
+
+.nav-region-info a {
+    color: #007185;
+    text-decoration: none;
+    margin-left: 5px;
+}
+
+.nav-region-info a:hover {
+    text-decoration: underline;
+}
+
+.nav-region-change {
+    margin-top: 10px;
+    font-size: 0.8em;
+}
+
+.nav-region-change a {
+    color: #007185;
+    text-decoration: none;
+}
+
+.nav-region-change a:hover {
+    text-decoration: underline;
+}

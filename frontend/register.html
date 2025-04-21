@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Clone - Create Account</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .create-account-container {
+            background-color: #fff;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 400px;
+        }
+
+        .create-account-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        .form-group button {
+            background-color: #f0c14b;
+            border: 1px solid #a88734;
+            color: #111;
+            padding: 10px 15px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        .form-group button:hover {
+            background-color: #e0b13b;
+        }
+
+        .form-group .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="create-account-container">
+        <h1>Create account</h1>
+        <form id="createAccountForm">
+            <div class="form-group">
+                <label for="name">Your name</label>
+                <input type="text" id="name" name="name">
+                <div id="nameError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="email">Mobile number or email</label>
+                <input type="email" id="email" name="email">
+                <div id="emailError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+                <div id="passwordError" class="error-message">Passwords must be at least 6 characters</div>
+            </div>
+            <div class="form-group">
+                <label for="reenterPassword">Re-enter password</label>
+                <input type="password" id="reenterPassword" name="reenterPassword">
+                <div id="reenterPasswordError" class="error-message"></div>
+            </div>
+            <div class="form-group">
+                <button type="submit">Continue</button>
+            </div>
+            <div>
+                By creating an account, you agree to Amazon's <a href="#">Conditions of Use</a> and <a href="#">Privacy Notice</a>.
+            </div>
+            <hr>
+            <div>
+                Buying for work? <a href="#">Create a free business account</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('createAccountForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            const nameInput = document.getElementById('name');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('password');
+            const reenterPasswordInput = document.getElementById('reenterPassword');
+
+            const enteredName = nameInput.value;
+            const enteredEmail = emailInput.value;
+            const enteredPassword = passwordInput.value;
+            const enteredReenterPassword = reenterPasswordInput.value;
+
+            let hasErrors = false;
+
+            // Basic validation (you can add more robust checks)
+            if (enteredName.trim() === "") {
+                document.getElementById('nameError').textContent = "Enter your name";
+                hasErrors = true;
+            } else {
+                document.getElementById('nameError').textContent = "";
+            }
+
+            if (enteredEmail.trim() === "") {
+                document.getElementById('emailError').textContent = "Enter your mobile number or email";
+                hasErrors = true;
+            } else {
+                document.getElementById('emailError').textContent = "";
+            }
+
+            if (enteredPassword.length < 6) {
+                document.getElementById('passwordError').textContent = "Passwords must be at least 6 characters";
+                hasErrors = true;
+            } else {
+                document.getElementById('passwordError').textContent = "Passwords must be at least 6 characters"; // Keep the hint
+            }
+
+            if (enteredPassword !== enteredReenterPassword) {
+                document.getElementById('reenterPasswordError').textContent = "Passwords do not match";
+                hasErrors = true;
+            } else {
+                document.getElementById('reenterPasswordError').textContent = "";
+            }
+
+            if (!hasErrors) {
+                // Store the name and email in local storage
+                localStorage.setItem('userName', enteredName);
+                localStorage.setItem('userEmail', enteredEmail);
+
+                // Redirect directly to your home page HTML file
+                window.location.href = '/frontend/index.html';
+            }
+        });
+
+        // Optional: Retrieve and display the stored information on the home page
+        // (This code would go in your frontend/index.html file's JavaScript)
+        // window.onload = function() {
+        //     const storedName = localStorage.getItem('userName');
+        //     const storedEmail = localStorage.getItem('userEmail');
+        //     if (storedName && storedEmail) {
+        //         console.log('Stored Name on Home Page:', storedName);
+        //         console.log('Stored Email on Home Page:', storedEmail);
+        //         // You could display this information on your home page
+        //         // For example:
+        //         // const greetingElement = document.getElementById('userGreeting');
+        //         // if (greetingElement) {
+        //         //     greetingElement.textContent = 'Welcome, ' + storedName + ' (' + storedEmail + ')';
+        //         // }
+        //     }
+        // };
+    </script>
+</body>
+</html>
